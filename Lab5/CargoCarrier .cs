@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 namespace Lab5
 {
     /// <summary>
-    /// Класс CargoCarrier содержит общую информацию о школе.
+    /// Класс CargoCarrier содержит общую информацию о грузоперевозчике.
     /// </summary>
     internal class CargoCarrier
     {
