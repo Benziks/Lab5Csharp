@@ -12,7 +12,7 @@ namespace Lab5
         public CargoCarrier CargoCarrier => _cargoCarrier;
 
         /// <summary>
-        /// Создает новый экземпляр класса Airplane и наследует свойства CargoInfo.
+        /// Создает новый экземпляр класса CargoInfo и наследует свойства CargoCarrier.
         /// </summary>
         /// <param name="cargoCapacity">Вместимость груза</param>
         /// <param name="price">Цена</param>
