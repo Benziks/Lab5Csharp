@@ -11,6 +11,15 @@ namespace Lab5
 
         public CargoCarrier CargoCarrier => _cargoCarrier;
 
+        /// <summary>
+        /// Создает новый экземпляр класса Airplane и наследует свойства CargoInfo.
+        /// </summary>
+        /// <param name="cargoCapacity">Вместимость груза</param>
+        /// <param name="price">Цена</param>
+        /// <param name="city">Город</param>
+        /// <param name="destination">Адресат</param>
+        /// <param name="cargoWeight">Вес груза</param>
+
         public CargoInfo(double cargoCapacity, double price, string city, string destination, double cargoWeight)
         {
             _cargoCarrier = new CargoCarrier(cargoCapacity, price, city, destination, cargoWeight);
@@ -21,12 +30,20 @@ namespace Lab5
             _cargoInfo = new CargoInfo[0];
         }
 
+        /// <summary>
+        /// Добавление объекта в массив.
+        /// </summary>
+        /// <param name="cargoInfo">Экземпляр класса CargoInfo или производных от него классов.</param>
         public void AddOrder(CargoInfo cargoInfo)
         {
             Array.Resize(ref _cargoInfo, _cargoInfo.Length + 1);
             _cargoInfo[_cargoInfo.Length - 1] = cargoInfo;
         }
 
+        /// <summary>
+        /// Удаление объекта из массива.
+        /// </summary>
+        /// <param name="orderNumber">Индекс элемента который необходимо удалить.</param>
         public void DeleteOrder(int orderNumber)
         {
             if (orderNumber >= 0 && orderNumber < _cargoInfo.Length)
@@ -38,6 +55,16 @@ namespace Lab5
 
         }
 
+        /// <summary>
+        /// Редактирование массива
+        /// </summary>
+        /// <param name="orderNumber">Индекс элемента который необходимо заменить.</param>
+        /// <param name="newCargoCapacity">Новый элемент CargoCapacity.</param>
+        /// <param name="newPrice">Новый элемент Price</param>
+        /// <param name="newCity">Новый элемент City</param>
+        /// <param name="newDestination">Новый элемент Destination</param>
+        /// <param name="newCargoWeight">Новый элемент CargoWeight</param>
+        /// <exception cref="FormatException"></exception>
         public void EditOrder(int orderNumber, double newCargoCapacity, double newPrice, string newCity, string newDestination, double newCargoWeight)
         {
             if (orderNumber >= 0 && orderNumber < _cargoInfo.Length)

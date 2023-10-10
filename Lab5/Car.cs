@@ -2,6 +2,9 @@
 
 namespace Lab5
 {
+    /// <summary>
+    /// Класс Train, содержит свойства Car, а также наследует свойства класса CargoInfo
+    /// </summary>
     internal class Car : CargoInfo
     {
         private string _model;
@@ -9,12 +12,16 @@ namespace Lab5
         private double _speed;
         private const byte MIN_FUEL = 0;
         private const byte MIN_SPEED = 0;
-       
-        
+
+        /// <summary>
+        /// Установка и получение поля _model, _fuel и _speed.
+        /// </summary>
+        /// 
         public string Model
         {
             get { return _model; }
-            set {
+            set
+            {
                 if (!string.IsNullOrEmpty(value))
                 {
                     _model = value.Trim();
@@ -26,11 +33,12 @@ namespace Lab5
                 }
             }
         }
-        
-        public double Fuel 
-        { 
+
+        public double Fuel
+        {
             get { return _fuel; }
-            set {
+            set
+            {
                 if (value >= MIN_FUEL)
                 {
                     _fuel = value;
@@ -39,12 +47,12 @@ namespace Lab5
                 {
                     throw new FormatException("Топливо не может быть отрицательным");
                 }
-            } 
+            }
         }
 
         public double Speed
-        { 
-            get { return _speed; } 
+        {
+            get { return _speed; }
             set
             {
                 if (value >= MIN_SPEED)
@@ -55,9 +63,20 @@ namespace Lab5
                 {
                     throw new FormatException("Скорость не может быть с минусовым значением");
                 }
-            } 
+            }
         }
 
+        /// <summary>
+        /// Создает новый экземпляр класса Car и наследует свойства CargoInfo.
+        /// </summary>
+        /// <param name="cargoCapacity">Вместимость груза</param>
+        /// <param name="price">Цена</param>
+        /// <param name="city">Город</param>
+        /// <param name="destination">Адресат</param>
+        /// <param name="cargoWeight">Вес груза</param>
+        /// <param name="flightRange">Дальность полета</param>
+        /// <param name="fuel">Топливо</param>
+        /// <param name="speed">Скорость</param>
         public Car(double cargoCapacity, double price, string city, string destination, double cargoWeight, string model, double fuel, double speed) : base(cargoCapacity, price, city, destination, cargoWeight)
         {
             Model = model;

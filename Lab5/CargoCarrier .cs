@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace Lab5
 {
+    /// <summary>
+    /// Класс CargoCarrier содержит общую информацию о школе.
+    /// </summary>
     internal class CargoCarrier
     {
         private double _cargoCapacity;
@@ -16,10 +19,15 @@ namespace Lab5
         private const byte MIN_CargoWeight = 0;
         private readonly Regex stringCheck = new Regex("[0-9@#$%^&*()_+={};':\",./<>?\\[\\]~`|\\\\-]");
 
+        /// <summary>
+        /// Установка и получение поля _cargoCapacity, _price и _city,_destination,_cargoWeight.
+        /// </summary>
+
         public double CargoCapacity
-        {  
-            get { return _cargoCapacity; } 
-            set {
+        {
+            get { return _cargoCapacity; }
+            set
+            {
                 if (value >= MIN_CargoCapacity)
                 {
                     _cargoCapacity = value;
@@ -28,13 +36,14 @@ namespace Lab5
                 {
                     throw new FormatException("Вместимость груза не может быть отрицательной");
                 }
-            } 
+            }
         }
 
         public double Price
         {
             get { return _price; }
-            set {
+            set
+            {
                 if (value >= MIN_Price)
                 {
                     _price = value;
@@ -95,6 +104,15 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Создает новый экземпляр класса Airplane и наследует свойства CargoInfo.
+        /// </summary>
+        /// <param name="cargoCapacity">Вместимость груза</param>
+        /// <param name="price">Цена</param>
+        /// <param name="city">Город</param>
+        /// <param name="destination">Адресат</param>
+        /// <param name="cargoWeight">Вес груза</param>
+       
         public CargoCarrier(double cargoCapacity, double price, string city, string destination, double cargoWeight)
         {
             CargoCapacity = cargoCapacity;

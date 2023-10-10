@@ -2,6 +2,9 @@
 
 namespace Lab5
 {
+    /// <summary>
+    /// Класс Train, содержит свойства Train, а также наследует свойства класса CargoInfo
+    /// </summary>
     internal class Train : CargoInfo
     {
         private int _quantityOfCarriage;
@@ -9,8 +12,11 @@ namespace Lab5
         private double _speed;
         private const byte MIN_SPEED = 0;
         private const byte MIN_QuantityOfCarriage = 0;
-        
 
+        /// <summary>
+        /// Установка и получение поля _quantityOfCarriage, _model и _speed.
+        /// </summary>
+       
         public int QuantityOfCarriage
         {
             get { return _quantityOfCarriage; }
@@ -59,6 +65,17 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Создает новый экземпляр класса Train и наследует свойства CargoInfo.
+        /// </summary>
+        /// <param name="cargoCapacity">Вместимость груза</param>
+        /// <param name="price">Цена</param>
+        /// <param name="city">Город</param>
+        /// <param name="destination">Адресат</param>
+        /// <param name="cargoWeight">Вес груза</param>
+        /// <param name="flightRange">Дальность полета</param>
+        /// <param name="fuel">Топливо</param>
+        /// <param name="speed">Скорость</param>
         public Train(double cargoCapacity, double price, string city, string destination, double cargoWeight, int quantityOfCarriage,string model, double speed) : base(cargoCapacity, price, city, destination, cargoWeight)
         {
             QuantityOfCarriage = quantityOfCarriage;

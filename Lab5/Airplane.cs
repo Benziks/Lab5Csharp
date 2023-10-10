@@ -2,6 +2,9 @@
 
 namespace Lab5
 {
+    /// <summary>
+    /// Класс Airplane, содержит свойства Airplane, а также наследует свойства класса CargoInfo
+    /// </summary>
     internal class Airplane : CargoInfo
     {
         private double _flightRange;
@@ -10,6 +13,10 @@ namespace Lab5
         private const byte MIN_FUEL = 0;
         private const byte MIN_SPEED = 0;
         private const byte MIN_FlightRange = 0;
+
+        /// <summary>
+        /// Установка и получение поля _flightRange, _fuel и _speed.
+        /// </summary>
 
         public double FlightRange
         {
@@ -59,6 +66,17 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Создает новый экземпляр класса Airplane и наследует свойства CargoInfo.
+        /// </summary>
+        /// <param name="cargoCapacity">Вместимость груза</param>
+        /// <param name="price">Цена</param>
+        /// <param name="city">Город</param>
+        /// <param name="destination">Адресат</param>
+        /// <param name="cargoWeight">Вес груза</param>
+        /// <param name="flightRange">Дальность полета</param>
+        /// <param name="fuel">Топливо</param>
+        /// <param name="speed">Скорость</param>
         public Airplane(double cargoCapacity, double price, string city, string destination, double cargoWeight, double flightRange, double fuel, double speed) : base(cargoCapacity, price, city, destination, cargoWeight)
         {
             FlightRange = flightRange;

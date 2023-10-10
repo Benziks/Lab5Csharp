@@ -40,17 +40,6 @@ namespace Lab5
 
 
             Console.WriteLine("-----------------------------------------------------------");
-
-            cargoOrder.AddOrder(airplane2);
-            cargoOrder.AddOrder(car1);
-
-
-            foreach (var order in cargoOrder.CargoOrder)
-            {
-                Console.WriteLine(order);
-            }
-
-            Console.WriteLine("-----------------------------------------------------------");
            
             cargoOrder.EditOrder(2, 10, 800, "Los Angeles", "Данил Табаков", 250);
 
