@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab5
 {
@@ -56,7 +52,7 @@ namespace Lab5
 
             Console.WriteLine("-----------------------------------------------------------");
            
-            cargoOrder.EditOrder(2, 10, 800, "Los Angeles", "Новый получатель", 250);
+            cargoOrder.EditOrder(2, 10, 800, "Los Angeles", "Данил Табаков", 250);
 
             foreach (var order in cargoOrder.CargoOrder)
             {
