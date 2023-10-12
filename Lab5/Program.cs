@@ -16,7 +16,9 @@ namespace Lab5
             Car car1 = new Car(5, 400, "New York", "Романюк Иван", 200, "Toyota Camry", 120, 60);
 
 
-            CargoInfo cargoOrder = new CargoInfo();
+            CargoCarrier cargoOrder = new CargoCarrier();
+
+
 
             cargoOrder.AddOrder(airplane);
             cargoOrder.AddOrder(train);
@@ -24,7 +26,7 @@ namespace Lab5
             cargoOrder.AddOrder(car1);
             cargoOrder.AddOrder(car);
 
-            foreach (var order in cargoOrder.CargoOrder)
+            foreach (var order in cargoOrder.Orders)
             {
                 Console.WriteLine(order);
             }
@@ -33,7 +35,7 @@ namespace Lab5
 
             cargoOrder.DeleteOrder(2);
            
-            foreach (var order in cargoOrder.CargoOrder)
+            foreach (var order in cargoOrder.Orders)
             {
                 Console.WriteLine(order);
             }
@@ -43,7 +45,7 @@ namespace Lab5
            
             cargoOrder.EditOrder(2, 10, 800, "Los Angeles", "Данил Табаков", 250);
 
-            foreach (var order in cargoOrder.CargoOrder)
+            foreach (var order in cargoOrder.Orders)
             {
                 Console.WriteLine(order);
             }

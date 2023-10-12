@@ -5,122 +5,68 @@ using System.Text.RegularExpressions;
 namespace Lab5
 {
     /// <summary>
-    /// Класс CargoCarrier содержит общую информацию о грузоперевозчике.
+    /// Класс CargoCarrier содержит общую информацию о грузоперевозчике, а так же содержит массив который хранит заказы.
     /// </summary>
     internal class CargoCarrier
     {
-        private double _cargoCapacity;
-        private double _price;
-        private string _city;
-        private string _destination;
-        private double _cargoWeight;
-        private const byte MIN_CargoCapacity = 0;
-        private const byte MIN_Price = 1;
-        private const byte MIN_CargoWeight = 0;
-        private readonly Regex stringCheck = new Regex("[0-9@#$%^&*()_+={};':\",./<>?\\[\\]~`|\\\\-]");
+        private Orders[] _orders;
 
-        /// <summary>
-        /// Установка и получение поля _cargoCapacity, _price и _city,_destination,_cargoWeight.
-        /// </summary>
-
-        public double CargoCapacity
+        public CargoCarrier()
         {
-            get { return _cargoCapacity; }
-            set
-            {
-                if (value >= MIN_CargoCapacity)
-                {
-                    _cargoCapacity = value;
-                }
-                else
-                {
-                    throw new FormatException("Вместимость груза не может быть отрицательной");
-                }
-            }
-        }
-
-        public double Price
-        {
-            get { return _price; }
-            set
-            {
-                if (value >= MIN_Price)
-                {
-                    _price = value;
-                }
-                else
-                {
-                    throw new FormatException("Цена не может быть равна 0 или меньше");
-                }
-            }
-        }
-
-        public string City
-        {
-            get { return _city; }
-            set
-            {
-                if (!string.IsNullOrEmpty(value) && !stringCheck.IsMatch(value))
-                {
-                    _city = value.Trim();
-                }
-
-                else
-                {
-                    throw new FormatException("Неверное название города");
-                }
-            }
-        }
-        public string Destination
-        {
-            get { return _destination; }
-            set
-            {
-                if (!string.IsNullOrEmpty(value) && !stringCheck.IsMatch(value))
-                {
-                    _destination = value.Trim();
-                }
-
-                else
-                {
-                    throw new FormatException("Неверное имя получателя");
-                }
-            }
-        }
-
-        public double CargoWeight
-        {
-            get { return _cargoWeight; }
-            set
-            {
-                if (value >= MIN_CargoWeight)
-                {
-                    _cargoWeight = value;
-                }
-                else
-                {
-                    throw new FormatException("Вес не может быть меньше 0");
-                }
-            }
+            _orders = new Orders[0];
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса Airplane и наследует свойства CargoInfo.
+        /// Добавление объекта в массив.
         /// </summary>
-        /// <param name="cargoCapacity">Вместимость груза</param>
-        /// <param name="price">Цена</param>
-        /// <param name="city">Город</param>
-        /// <param name="destination">Адресат</param>
-        /// <param name="cargoWeight">Вес груза</param>
-       
-        public CargoCarrier(double cargoCapacity, double price, string city, string destination, double cargoWeight)
+        /// <param name="orders">Экземпляр класса CargoInfo или производных от него классов.</param>
+        public void AddOrder(Orders orders)
         {
-            CargoCapacity = cargoCapacity;
-            Price = price;
-            City = city;
-            Destination = destination;
-            CargoWeight = cargoWeight;
+            Array.Resize(ref _orders, _orders.Length + 1);
+            _orders[_orders.Length - 1] = orders;
         }
 
+        /// <summary>
+        /// Удаление объекта из массива.
+        /// </summary>
+        /// <param name="orderNumber">Индекс элемента который необходимо удалить.</param>
+        public void DeleteOrder(int orderNumber)
+        {
+            if (orderNumber >= 0 && orderNumber < _orders.Length)
+            {
+                Array.Copy(_orders, orderNumber + 1, _orders, orderNumber, _orders.Length - orderNumber - 1);
+                Array.Resize(ref _orders, _orders.Length - 1);
+                Console.WriteLine($"Заказ с номером {orderNumber} успешно удален.");
+            }
+
+        }
+
+        /// <summary>
+        /// Редактирование массива
+        /// </summary>
+        /// <param name="orderNumber">Индекс элемента который необходимо заменить.</param>
+        /// <param name="newCargoCapacity">Новый элемент CargoCapacity.</param>
+        /// <param name="newPrice">Новый элемент Price</param>
+        /// <param name="newCity">Новый элемент City</param>
+        /// <param name="newDestination">Новый элемент Destination</param>
+        /// <param name="newCargoWeight">Новый элемент CargoWeight</param>
+        /// <exception cref="FormatException"></exception>
+        public void EditOrder(int orderNumber, double newCargoCapacity, double newPrice, string newCity, string newDestination, double newCargoWeight)
+        {
+            if (orderNumber >= 0 && orderNumber < _orders.Length)
+            {
+                _orders[orderNumber].CargoCapacity = newCargoCapacity;
+                _orders[orderNumber].Price = newPrice;
+                _orders[orderNumber].City = newCity;
+                _orders[orderNumber].Destination = newDestination;
+                _orders[orderNumber].CargoWeight = newCargoWeight;
+                Console.WriteLine($"Заказ с номером {orderNumber} успешно изменен.");
+            }
+            else
+            {
+                throw new FormatException("Неверно указан индекс");
+            }
+        }
+        public Orders[] Orders => _orders;
     }
 }

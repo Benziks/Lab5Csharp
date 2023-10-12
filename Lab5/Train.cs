@@ -3,20 +3,22 @@
 namespace Lab5
 {
     /// <summary>
-    /// Класс Train, содержит свойства Train, а также наследует свойства класса CargoInfo
+    /// Класс Train, содержит свойства Train, а также наследует свойства класса Orders
     /// </summary>
-    internal class Train : CargoInfo
+    internal class Train : Orders
     {
         private int _quantityOfCarriage;
         private string _model;
         private double _speed;
         private const byte MIN_SPEED = 0;
-        private const byte MIN_QuantityOfCarriage = 0;
+        private const byte MIN_QuantityOfCarriage = 1;
+
 
         /// <summary>
-        /// Установка и получение поля _quantityOfCarriage, _model и _speed.
+        /// Установка и получение поля QuantityOfCarriage(Количество вагонов).
+        /// Внутри происходит проверка на минимальную кол-во вагонов у поезда.
+        /// Если значение меньше чем минимальное допустимое значение (MIN_QuantityOfCarriage), то допущена ошибка в составлении заказа, в таком случае покажет ошибку с конкретным текстом.
         /// </summary>
-       
         public int QuantityOfCarriage
         {
             get { return _quantityOfCarriage; }
@@ -32,6 +34,12 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Установка и получение поля Model(Модель).
+        /// Внутри происходит проверка на null, а так же на корректность написания модели.
+        /// Если в моделе будет null, то это значит что допущена ошибка в составлении заказа, в таком случае покажет ошибку с конкретным текстом.
+        /// В обратном случае выведет город с удаленными пробелами(_model = value.Trim();).
+        /// </summary>
         public string Model
         {
             get { return _model; }
@@ -49,6 +57,11 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Установка и получение поля Speed(Скорость).
+        /// Внутри происходит проверка на скорость у поезда.
+        /// Если значение меньше чем минимальное допустимое значение (MIN_SPEED), то допущена ошибка в составлении заказа, в таком случае покажет ошибку с конкретным текстом.
+        /// </summary>
         public double Speed
         {
             get { return _speed; }
@@ -66,7 +79,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса Train и наследует свойства CargoInfo.
+        /// Создает новый экземпляр класса Train и наследует свойства Orders.
         /// </summary>
         /// <param name="cargoCapacity">Вместимость груза</param>
         /// <param name="price">Цена</param>

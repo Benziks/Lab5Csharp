@@ -3,9 +3,9 @@
 namespace Lab5
 {
     /// <summary>
-    /// Класс Airplane, содержит свойства Airplane, а также наследует свойства класса CargoInfo
+    /// Класс Airplane, содержит свойства Airplane, а также наследует свойства класса Orders
     /// </summary>
-    internal class Airplane : CargoInfo
+    internal class Airplane : Orders
     {
         private double _flightRange;
         private double _fuel;
@@ -14,10 +14,12 @@ namespace Lab5
         private const byte MIN_SPEED = 0;
         private const byte MIN_FlightRange = 0;
 
-        /// <summary>
-        /// Установка и получение поля _flightRange, _fuel и _speed.
-        /// </summary>
 
+        /// <summary>
+        /// Установка и получение поля FlightRange(Дальность полета ).
+        /// Внутри происходит проверка на минимальную дальность полета у самолета.
+        /// Если значение меньше чем минимальное допустимое значение (MIN_FlightRange), то допущена ошибка в составлении заказа, в таком случае покажет ошибку с конкретным текстом.
+        /// </summary>
         public double FlightRange
         {
             get { return _flightRange; }
@@ -34,6 +36,11 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Установка и получение поля Fuel(Топливо).
+        /// Внутри происходит проверка на минимальное кол-во топливо у самолета.
+        /// Если значение меньше чем минимальное допустимое значение (MIN_FUEL), то допущена ошибка в составлении заказа, в таком случае покажет ошибку с конкретным текстом.
+        /// </summary>
         public double Fuel
         {
             get { return _fuel; }
@@ -50,6 +57,11 @@ namespace Lab5
             }
         }
 
+        /// <summary>
+        /// Установка и получение поля Speed(Скорость).
+        /// Внутри происходит проверка на скорость у самолета.
+        /// Если значение меньше чем минимальное допустимое значение (MIN_SPEED), то допущена ошибка в составлении заказа, в таком случае покажет ошибку с конкретным текстом.
+        /// </summary>
         public double Speed
         {
             get { return _speed; }
@@ -67,7 +79,7 @@ namespace Lab5
         }
 
         /// <summary>
-        /// Создает новый экземпляр класса Airplane и наследует свойства CargoInfo.
+        /// Создает новый экземпляр класса Airplane и наследует свойства Orders.
         /// </summary>
         /// <param name="cargoCapacity">Вместимость груза</param>
         /// <param name="price">Цена</param>
